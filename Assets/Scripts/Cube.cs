@@ -6,7 +6,9 @@ using UnityEngine;
 public class Cube : MonoBehaviour
 {
     [field: SerializeField] public float SplitChance { get; private set; } = 1f;
+    [field: SerializeField] public float Generation { get; private set; } = 1f;
     [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
+    
     public event Action<Cube> Clicked;
 
     private MeshRenderer _renderer;
@@ -18,11 +20,12 @@ public class Cube : MonoBehaviour
         _colorGenerator = new ColorGenerator();
     }
 
-    public void Construct(Vector3 position, Vector3 scale, float splitChance)
+    public void Construct(Vector3 position, Vector3 scale, float splitChance, float generation)
     {
         transform.position = position;
         transform.localScale = scale;
         SplitChance = splitChance;
+        Generation = generation;
 
         Color color = _colorGenerator.ChangeRandomColor();
         _renderer.material.color = color;
