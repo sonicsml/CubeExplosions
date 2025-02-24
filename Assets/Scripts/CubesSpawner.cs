@@ -58,11 +58,11 @@ public class CubesSpawner : MonoBehaviour
 
         for (int i = 0; i < countNewCubes; i++)
         {
-            cubes.Add(CreateNewCube(cube));
+            cubes.Add(CreateCube(cube));
         }
     }
 
-    private Cube CreateNewCube(Cube cube)
+    private Cube CreateCube(Cube cube)
     {
         float newChance = cube.SplitChance / _divider;
         Vector3 newScale = cube.transform.localScale / _divider;
