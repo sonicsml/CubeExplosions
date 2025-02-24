@@ -8,11 +8,9 @@ public class CubesSpawner : MonoBehaviour
     [SerializeField] private Cube _cube;
     [SerializeField] private Cube _prefab;
     [SerializeField] private Exploader _exploader;
+
     private float _divider = 2f;
     
-
-    private ColorGenerator _colorGenerator;
-
     private void OnEnable()
     {
         _cube.Clicked += OnCubeClicked;
@@ -31,6 +29,13 @@ public class CubesSpawner : MonoBehaviour
         {
             SplitCube(cube);
         }
+        else
+        {
+            if (_exploader != null)
+            {
+                _exploader.Explode(cube, cube.transform.position);
+            }
+        }
     }
 
     private void SplitCube(Cube cube)
@@ -41,14 +46,9 @@ public class CubesSpawner : MonoBehaviour
         for (int i = 0; i < countNewCubes; i++)
         {
             cubes.Add(CreateNewCube(cube));
-        }
-
-        if (_exploader != null)
-        {
-            _exploader.Explode(cubes, cube.transform.position);
         } 
     }
-   
+
     private Cube CreateNewCube(Cube cube)
     {
         float newChance = cube.SplitChance / _divider;

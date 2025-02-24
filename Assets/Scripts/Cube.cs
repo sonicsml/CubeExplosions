@@ -12,12 +12,12 @@ public class Cube : MonoBehaviour
     private MeshRenderer _renderer;
     private ColorGenerator _colorGenerator;
 
-
     private void Awake()
     {
         _renderer = GetComponent<MeshRenderer>();
         _colorGenerator = new ColorGenerator();
     }
+
     public void Construct(Vector3 position, Vector3 scale, float splitChance)
     {
         transform.position = position;
